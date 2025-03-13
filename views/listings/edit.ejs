@@ -1,0 +1,54 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <h3 style="width: 100%;text-align: center;" class="mb-3">Edit Form</h3>
+            <hr>
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+               <!-- The form action is set to /listings/<%= listing._id %>?_method=PUT to make a PUT request to the server. -->
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" value="<%= listing.title %>" class="form-control" type="text" required>
+                    <div class="valid-feedback">Title looks catchy!!</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input name="listing[description]" value="<%= listing.description %>" class="form-control" type="text" required>
+                    <div class="invalid-feedback">Please enter a short description</div>
+                </div>
+
+                <div class="mb-3">
+                    <img src="<%= originalImageUrl %>" style="width: 100%;height: 200px;">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload a new Image</label>
+                    <input name="listing[image]" class="form-control" type="file" required>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input name="listing[price]" value="<%= listing.price %>" class="form-control" type="number" required>
+                        <div class="invalid-feedback">Please enter a valid Price</div>
+                    </div>
+
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="listing[country]" value="<%= listing.country %>" class="form-control" type="text" required>
+                        <div class="invalid-feedback">Enter a valid country name</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" value="<%= listing.location %>" class="form-control" type="text" required>
+                    <div class="invalid-feedback">Enter a valid location</div>
+                </div>
+                <button class="btn btn-dark mb-3 add-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
